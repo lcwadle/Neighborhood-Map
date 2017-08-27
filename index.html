@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Map</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css" hreflang="en-us">
+  </head>
+  <body>
+    <header class="container-fluid">
+      <div class="row">
+        <h1 class="col-md-9">
+          Neighborhood Map
+        </h1>
+        <form action="" class="col-md-3 filter">
+          <input type="text" />
+          <button type="submit">
+            <i class="fa fa-filter"></i>
+          </button>
+        </form>
+      </div>
+    </header>
+    <section class="container-fluid main">
+      <div class="row">
+        <div class="list col-md-3">
+          <ul class="col-md-12" id="location_list">
+            <li class="location">
+              <span class="location_text">Item 1</span>
+            </li>
+            <li class="location">
+              <span class="location_text">Item 2</span>
+            </li>
+          </ul>
+        </div>
+        <div class="map col-md-9">
+          <div id="map">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Maps -->
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.7413549, lng: -73.9980244},
+          zoom: 13
+        });
+      }
+    </script>
+
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuDVkMqlK--esPF-6sBZGWixsQqFmqUAo&v=3&callback=initMap">
+    </script>
+
+    <!-- JQuery -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <footer>
+
+    </footer>
+  </body>
+</html>
