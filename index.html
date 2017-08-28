@@ -34,12 +34,9 @@
               <i class="fa fa-filter"></i>
             </button>
           </form>
-          <ul class="col-xs-12" id="location_list">
+          <ul class="col-xs-12" id="location_list" data-bind="foreach: businesses">
             <li class="location">
-              <span class="location_text">Item 1</span>
-            </li>
-            <li class="location">
-              <span class="location_text">Item 2</span>
+              <span class="location_text" data-bind='text: name'></span>
             </li>
           </ul>
         </div>
