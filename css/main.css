@@ -12,22 +12,34 @@ header, nav, footer, section, article, div {
 }
 
 header {
+  height: 8vh;
   border-bottom: 1px solid black;
-  height: 10vh;
+  margin: 0;
 }
 
-.filter {
-  margin-top: 3vh;
+form {
+  font-size: 20px;
+  padding: 5px;
+}
+
+form input {
+
+}
+
+#main {
+  height: 92vh;
+  margin: 0;
 }
 
 .list {
+  height: 92vh;
   border-right: 1px solid black;
-  height: 90vh;
   padding: 0;
 }
 
 #location_list {
-  list-style-type: decimal;
+  border-top: 1px solid black;
+  list-style-type: none;
   padding: 0;
   margin: 0;
 }
