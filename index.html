@@ -28,15 +28,35 @@
     <section class="container-fluid" id="main">
       <div class="row">
         <div class="list col-xs-3">
-          <form action="" class="col-xs-12">
-            <input class="col-xs-11" type="text" />
-            <button type="submit">
-              <i class="fa fa-filter"></i>
-            </button>
-          </form>
+          <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(0, data, event) }">
+            All
+            <i class="fa fa-star"></i>
+          </button>
+          <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(1, data, event) }">
+            1
+            <i class="fa fa-star"></i>
+          </button>
+          <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(2, data, event) }">
+            2
+            <i class="fa fa-star"></i>
+          </button>
+          <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(3, data, event) }">
+            3
+            <i class="fa fa-star"></i>
+          </button>
+          <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(4, data, event) }">
+            4
+            <i class="fa fa-star"></i>
+          </button>
+          <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(5, data, event) }">
+            5
+            <i class="fa fa-star"></i>
+          </button>
           <ul class="col-xs-12" id="location_list" data-bind="foreach: businesses">
-            <li class="location">
-              <span class="location_text" data-bind='text: name'></span>
+            <li data-bind='if: displayed'>
+              <div class="location">
+                <span class="location_text" data-bind='text: name'></span>
+              </div>
             </li>
           </ul>
         </div>
