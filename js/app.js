@@ -97,7 +97,6 @@ $.ajax({
       marker.setMap(map);
 
       marker.addListener('click', function() {
-            this.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
             populateInfoWindow(this, largeInfoWindow);
           });
     });
@@ -118,7 +117,7 @@ function populateInfoWindow(marker, infowindow) {
               '<h4> Phone: ' + marker.phone + '</h4>' +
               '<h4> Price: ' + marker.price + '</h4>' +
               '<h4> Rating: ' + marker.rating +
-                "<i class='fa fa-star'><i>" + '</h4>' +
+                "<i class='fa fa-star'></i>" + '</h4>' +
             '</div>'
           );
           infowindow.open(map, marker);

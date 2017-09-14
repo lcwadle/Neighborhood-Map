@@ -29,33 +29,46 @@
       <div class="row">
         <div class="list col-xs-3">
           <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(0, data, event) }">
-            All
+            <span>All</span>
             <i class="fa fa-star"></i>
           </button>
           <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(1, data, event) }">
-            1
+            <span>1</span>
             <i class="fa fa-star"></i>
           </button>
           <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(2, data, event) }">
-            2
+            <span>2</span>
             <i class="fa fa-star"></i>
           </button>
           <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(3, data, event) }">
-            3
+            <span>3</span>
             <i class="fa fa-star"></i>
           </button>
           <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(4, data, event) }">
-            4
+            <span>4</span>
             <i class="fa fa-star"></i>
           </button>
           <button class="rating col-xs-2 btn btn-default" data-bind="click: function(data, event) { showBusinessesbyRating(5, data, event) }">
-            5
+            <span>5</span>
             <i class="fa fa-star"></i>
           </button>
           <ul class="col-xs-12" id="location_list" data-bind="foreach: businesses">
             <li data-bind='if: displayed'>
               <div class="location">
-                <span class="location_text" data-bind='text: name'></span>
+                <p class="location_text" data-bind='text: name'></p>
+                <div class="location_details">
+                  <img data-bind='attr: {src: image_url }' />
+                  <p class="location_text">
+                    <span data-bind='text: phone'></span>
+                  </p>
+                  <p class="location_text">Price:
+                    <span data-bind='text: price'></span>
+                  </p>
+                  <p class="location_text">Rating:
+                    <span data-bind='text: rating'></span>
+                    <i class='fa fa-star'></i>
+                  </p>
+                </div>
               </div>
             </li>
           </ul>

@@ -12,13 +12,18 @@ header, nav, footer, section, article, div {
 }
 
 header {
-  height: 8vh;
   border-bottom: 1px solid black;
   margin: 0;
 }
 
+.title {
+  font-size: 4vw;
+}
+
 .rating {
-  padding: 5px;
+  font-size: 1vw;
+  text-align: left;
+  padding: 0;
 }
 
 #main {
@@ -27,9 +32,10 @@ header {
 }
 
 .list {
-  height: 92vh;
+  height: 90vh;
   border-right: 1px solid black;
   padding: 0;
+  overflow: scroll;
 }
 
 #location_list {
@@ -45,7 +51,11 @@ header {
 }
 
 .location_text {
-  padding-left: 30px;
+  font-size: 1.5vw;
+}
+
+.location_details {
+  display: none;
 }
 
 .map {
