@@ -18,6 +18,7 @@ var Business = function(rating, price, phone, id, review_count, name,
   this.image_url = image_url;
   this.marker = marker;
   this.displayed = ko.observable(true);
+  this.detailed = ko.observable(false);
 }
 
 // View Model
@@ -25,10 +26,12 @@ var viewModel = {
   businesses: ko.observableArray([])
 };
 
+// Add Business to View Model
 viewModel.addBusiness = function(business) {
   viewModel.businesses.push(business);
 }
 
+// Filter Businesses by rating
 viewModel.showBusinessesbyRating = function(stars) {
   for (var i = 0; i < viewModel.businesses().length; i++) {
     if (stars == 0) {
@@ -42,6 +45,20 @@ viewModel.showBusinessesbyRating = function(stars) {
       viewModel.businesses()[i].displayed(false);
     }
   }
+}
+
+// Show Hide Business details on list view
+function showBusinessInfo(id) {
+    for (var i = 0; i < viewModel.businesses().length; i++) {
+      if (viewModel.businesses()[i].id == id) {
+        viewModel.businesses()[i].detailed(true);
+        viewModel.businesses()[i].marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+      else {
+        viewModel.businesses()[i].detailed(false);
+        viewModel.businesses()[i].marker.setAnimation(null);
+      }
+    }
 }
 
 // Yelp POST URL Paramaters
@@ -73,7 +90,7 @@ yelp_get_url = yelp_get_url + "&longitude=" + longitude;
 $.ajax({
   dataType: "json",
   url: yelp_get_url,
-  headers: {'Authorization': "Bearer w7-3rcA8zqaBpMU8e8iLJObLV_QQVtItNsP5dug3Cyhw6ml79N74hkPu3AjneQelrBw852xfQpo3zJbZKgKaflZy1Ya3NBfPaj0FT4ltN3_8_s2H-mRyK4l0J7qkWXYx"},
+  headers: {'Authorization': "Bearer " + access_token},
   success: function(data) {
     $.each(data.businesses, function (index, value) {
       var marker = new google.maps.Marker({
@@ -102,11 +119,21 @@ $.ajax({
     });
     map.fitBounds(bounds);
   }
+}).fail(function(e) {
+  $("#errors").text("Failed to load Yelp data");
 });
 
 ko.applyBindings(viewModel);
 
+// Create infowindow when marker is clicked
 function populateInfoWindow(marker, infowindow) {
+        // Marker animation
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
@@ -120,9 +147,12 @@ function populateInfoWindow(marker, infowindow) {
                 "<i class='fa fa-star'></i>" + '</h4>' +
             '</div>'
           );
+
           infowindow.open(map, marker);
+
           // Make sure the marker property is cleared if the infowindow is closed.
           infowindow.addListener('closeclick', function() {
+            infowindow.marker.setAnimation(null);
             infowindow.marker = null;
           });
         }

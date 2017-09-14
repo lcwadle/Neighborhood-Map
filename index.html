@@ -21,7 +21,7 @@
     <header class="container-fluid">
       <div class="row">
         <h1 class="col-xs-11 col-xs-offset-1 title">
-          Neighborhood Map
+          Neighborhood Map using Google Maps and Yelp
         </h1>
       </div>
     </header>
@@ -54,9 +54,9 @@
           </button>
           <ul class="col-xs-12" id="location_list" data-bind="foreach: businesses">
             <li data-bind='if: displayed'>
-              <div class="location">
+              <button class="location col-xs-12" data-bind="click: function(data, event) { showBusinessInfo(id, data, event) }">
                 <p class="location_text" data-bind='text: name'></p>
-                <div class="location_details">
+                <div class="location_details" data-bind='if: detailed'>
                   <img data-bind='attr: {src: image_url }' />
                   <p class="location_text">
                     <span data-bind='text: phone'></span>
@@ -69,9 +69,10 @@
                     <i class='fa fa-star'></i>
                   </p>
                 </div>
-              </div>
+              </button>
             </li>
           </ul>
+          <p id="errors"></p>
         </div>
         <div class="map col-xs-9">
           <div id="map">
