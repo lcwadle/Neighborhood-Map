@@ -19,7 +19,7 @@ var Business = function(rating, price, phone, id, review_count, name,
   this.marker = marker;
   this.displayed = ko.observable(true);
   this.detailed = ko.observable(false);
-}
+};
 
 // View Model
 var viewModel = {
@@ -29,12 +29,12 @@ var viewModel = {
 // Add Business to View Model
 viewModel.addBusiness = function(business) {
   viewModel.businesses.push(business);
-}
+};
 
 // Filter Businesses by rating
 viewModel.showBusinessesbyRating = function(stars) {
   for (var i = 0; i < viewModel.businesses().length; i++) {
-    if (stars == 0) {
+    if (stars === 0) {
       viewModel.businesses()[i].marker.setMap(map);
       viewModel.businesses()[i].displayed(true);
     } else if (viewModel.businesses()[i].rating >= stars && viewModel.businesses()[i].rating < stars + 1) {
@@ -45,7 +45,7 @@ viewModel.showBusinessesbyRating = function(stars) {
       viewModel.businesses()[i].displayed(false);
     }
   }
-}
+};
 
 // Show Hide Business details on list view
 function showBusinessInfo(id) {
