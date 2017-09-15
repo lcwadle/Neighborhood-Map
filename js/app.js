@@ -158,10 +158,10 @@ function populateInfoWindow(marker, infowindow) {
       }
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 30.2672, lng: -97.7431},
-    zoom: 13
-  });
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 30.2672, lng: -97.7431},
+      zoom: 13
+    });
 
   largeInfoWindow = new google.maps.InfoWindow();
   bounds = new google.maps.LatLngBounds();

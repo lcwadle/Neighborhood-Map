@@ -21,7 +21,7 @@ header {
 }
 
 .rating {
-  font-size: 1vw;
+  font-size: 1.5vw;
   text-align: left;
   padding: 0;
 }
@@ -58,6 +58,9 @@ header {
 @media only screen and (max-width: 600px) {
     .location_text {
         font-size: 2.5vw;
+    }
+    .rating {
+      font-size: 1vw;
     }
 }
 
