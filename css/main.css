@@ -55,6 +55,12 @@ header {
   font-size: 1.5vw;
 }
 
+@media only screen and (max-width: 600px) {
+    .location_text {
+        font-size: 2.5vw;
+    }
+}
+
 .map {
   height: 90vh;
   padding: 0;

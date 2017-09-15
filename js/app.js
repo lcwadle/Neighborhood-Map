@@ -128,11 +128,10 @@ ko.applyBindings(viewModel);
 // Create infowindow when marker is clicked
 function populateInfoWindow(marker, infowindow) {
         // Marker animation
-        if (marker.getAnimation() !== null) {
-          marker.setAnimation(null);
-        } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
+        for (var i = 0; i < viewModel.businesses().length; i++) {
+          viewModel.businesses()[i].marker.setAnimation(null);
         }
+        marker.setAnimation(google.maps.Animation.BOUNCE);
 
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
@@ -152,7 +151,7 @@ function populateInfoWindow(marker, infowindow) {
 
           // Make sure the marker property is cleared if the infowindow is closed.
           infowindow.addListener('closeclick', function() {
-            infowindow.marker.setAnimation(null);
+            marker.setAnimation(null);
             infowindow.marker = null;
           });
         }
