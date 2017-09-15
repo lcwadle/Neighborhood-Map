@@ -49,16 +49,16 @@ viewModel.showBusinessesbyRating = function(stars) {
 
 // Show Hide Business details on list view
 function showBusinessInfo(id) {
-    for (var i = 0; i < viewModel.businesses().length; i++) {
-      if (viewModel.businesses()[i].id == id) {
-        viewModel.businesses()[i].detailed(true);
-        viewModel.businesses()[i].marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
-      else {
-        viewModel.businesses()[i].detailed(false);
-        viewModel.businesses()[i].marker.setAnimation(null);
-      }
+  for (var i = 0; i < viewModel.businesses().length; i++) {
+    if (viewModel.businesses()[i].id == id) {
+      viewModel.businesses()[i].detailed(true);
+      viewModel.businesses()[i].marker.setAnimation(google.maps.Animation.BOUNCE);
     }
+    else {
+      viewModel.businesses()[i].detailed(false);
+      viewModel.businesses()[i].marker.setAnimation(null);
+    }
+  }
 }
 
 // Yelp POST URL Paramaters
@@ -127,41 +127,45 @@ ko.applyBindings(viewModel);
 
 // Create infowindow when marker is clicked
 function populateInfoWindow(marker, infowindow) {
-        // Marker animation
-        for (var i = 0; i < viewModel.businesses().length; i++) {
-          viewModel.businesses()[i].marker.setAnimation(null);
-        }
-        marker.setAnimation(google.maps.Animation.BOUNCE);
+  // Marker animation
+  for (var i = 0; i < viewModel.businesses().length; i++) {
+    viewModel.businesses()[i].marker.setAnimation(null);
+  }
+  marker.setAnimation(google.maps.Animation.BOUNCE);
 
-        // Check to make sure the infowindow is not already opened on this marker.
-        if (infowindow.marker != marker) {
-          infowindow.marker = marker;
-          infowindow.setContent(
-            "<div class='infoWindow'>" +
-              '<h2>' + marker.title + '</h2>' +
-              '<img src=' + marker.image_url + ' />' +
-              '<h4> Phone: ' + marker.phone + '</h4>' +
-              '<h4> Price: ' + marker.price + '</h4>' +
-              '<h4> Rating: ' + marker.rating +
-                "<i class='fa fa-star'></i>" + '</h4>' +
-            '</div>'
-          );
+  // Check to make sure the infowindow is not already opened on this marker.
+  if (infowindow.marker != marker) {
+    infowindow.marker = marker;
+    infowindow.setContent(
+      "<div class='infoWindow'>" +
+        '<h2>' + marker.title + '</h2>' +
+        '<img src=' + marker.image_url + ' />' +
+        '<h4> Phone: ' + marker.phone + '</h4>' +
+        '<h4> Price: ' + marker.price + '</h4>' +
+        '<h4> Rating: ' + marker.rating +
+          "<i class='fa fa-star'></i>" + '</h4>' +
+      '</div>'
+    );
 
-          infowindow.open(map, marker);
+    infowindow.open(map, marker);
 
-          // Make sure the marker property is cleared if the infowindow is closed.
-          infowindow.addListener('closeclick', function() {
-            marker.setAnimation(null);
-            infowindow.marker = null;
-          });
-        }
-      }
+    // Make sure the marker property is cleared if the infowindow is closed.
+    infowindow.addListener('closeclick', function() {
+      marker.setAnimation(null);
+      infowindow.marker = null;
+    });
+  }
+}
+
+function googleError() {
+  alert("Google API Error");
+}
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 30.2672, lng: -97.7431},
-      zoom: 13
-    });
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 30.2672, lng: -97.7431},
+    zoom: 13
+  });
 
   largeInfoWindow = new google.maps.InfoWindow();
   bounds = new google.maps.LatLngBounds();
