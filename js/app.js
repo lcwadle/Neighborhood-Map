@@ -120,7 +120,7 @@ $.ajax({
     map.fitBounds(bounds);
   }
 }).fail(function(e) {
-  $("#errors").text("Failed to load Yelp data");
+  alert("Failed to load Yelp data");
 });
 
 ko.applyBindings(viewModel);
